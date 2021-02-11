@@ -152,6 +152,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardSignIn" />
 
+        <ProgressBar
+            android:id="@+id/signUpProgressBar"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/signInBtn"
+            app:layout_constraintEnd_toEndOf="@+id/signInBtn"
+            app:layout_constraintStart_toStartOf="@+id/signInBtn"
+            app:layout_constraintTop_toTopOf="@+id/signInBtn" />
+
         <TextView
             android:id="@+id/textNoAccount"
             android:layout_width="match_parent"
