@@ -79,6 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
         firebaseFirestore.collection(Constants.KEY_COLLECTION_USERS).add(hashMap)
                 .addOnSuccessListener(documentReference -> {
                     preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN, true);
+                    preferenceManager.putString(Constants.KEY_USER_ID, documentReference.getId());
                     preferenceManager.putString(Constants.KEY_FIRST_NAME, inputFirstName.getText().toString().trim());
                     preferenceManager.putString(Constants.KEY_LAST_NAME, inputLastName.getText().toString().trim());
                     preferenceManager.putString(Constants.KEY_EMAIL, inputEmail.getText().toString().trim());
