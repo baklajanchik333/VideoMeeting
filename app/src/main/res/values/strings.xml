@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">Video Meeting</string>
+    <!--<editor-fold desc="SignUp activity">-->
+    <string name="sign_up">Sign Up</string>
+    <string name="we_need_a_few_details_to_get_your_account_ready">We need a few details to get your account ready</string>
+    <string name="first_name">First Name</string>
+    <string name="inputFirstName">John</string>
+    <string name="last_name">Last Name</string>
+    <string name="inputLastName">Doe</string>
+    <string name="email">Email</string>
+    <string name="inputEmail">you@example.com</string>
+    <string name="password">Password</string>
+    <string name="inputPassword">• • • • • •</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="inputConfirmPassword">• • • • • •</string>
+    <string name="signUpBtn">Sign Up</string>
+    <string name="textHaveAccount">Already have an account?</string>
+    <string name="textSingIn">Sign In</string>
+    <!--</editor-fold>-->
+
+    <!--<editor-fold desc="SignIn activity">-->
+    <string name="welcome_to">Welcome To</string>
+    <string name="video_meeting_conference_app">Video Meeting | Conference App</string>
+    <string name="textSignInLabel">Sign in to your account</string>
+    <string name="signInBtn">Sign In</string>
+    <string name="textNoAccount">Do not have an account?</string>
+    <string name="textSingUp">Sign Up</string>
+    <!--</editor-fold>-->
 </resources>

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="@color/colorDarkBackground"
     tools:context=".activities.SignUpActivity">
 
     <LinearLayout
         android:id="@+id/layoutHeader"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@color/colorPrimary"
+        android:background="#171616"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="@dimen/_8sdp"
@@ -63,7 +63,7 @@
                 android:gravity="center"
                 android:includeFontPadding="false"
                 android:text="@string/we_need_a_few_details_to_get_your_account_ready"
-                android:textColor="@color/colorPrimaryText"
+                android:textColor="@color/colorTextIcons"
                 android:textSize="@dimen/_15ssp" />
 
             <com.google.android.material.card.MaterialCardView
@@ -88,7 +88,7 @@
                         android:fontFamily="@font/ubuntu"
                         android:includeFontPadding="false"
                         android:text="@string/first_name"
-                        android:textColor="@color/colorPrimaryText"
+                        android:textColor="@color/colorTextIcons"
                         android:textSize="@dimen/_11ssp" />
 
                     <EditText
@@ -117,7 +117,7 @@
                         android:fontFamily="@font/ubuntu"
                         android:includeFontPadding="false"
                         android:text="@string/last_name"
-                        android:textColor="@color/colorPrimaryText"
+                        android:textColor="@color/colorTextIcons"
                         android:textSize="@dimen/_11ssp" />
 
                     <EditText
@@ -146,7 +146,7 @@
                         android:fontFamily="@font/ubuntu"
                         android:includeFontPadding="false"
                         android:text="@string/email"
-                        android:textColor="@color/colorPrimaryText"
+                        android:textColor="@color/colorTextIcons"
                         android:textSize="@dimen/_11ssp" />
 
                     <EditText
@@ -175,7 +175,7 @@
                         android:fontFamily="@font/ubuntu"
                         android:includeFontPadding="false"
                         android:text="@string/password"
-                        android:textColor="@color/colorPrimaryText"
+                        android:textColor="@color/colorTextIcons"
                         android:textSize="@dimen/_11ssp" />
 
                     <EditText
@@ -205,7 +205,7 @@
                         android:fontFamily="@font/ubuntu"
                         android:includeFontPadding="false"
                         android:text="@string/confirm_password"
-                        android:textColor="@color/colorPrimaryText"
+                        android:textColor="@color/colorTextIcons"
                         android:textSize="@dimen/_11ssp" />
 
                     <EditText
@@ -241,7 +241,7 @@
                 android:text="@string/signUpBtn"
                 android:textColor="@color/colorTextIcons"
                 android:textSize="@dimen/_13ssp"
-                app:backgroundTint="@color/colorPrimary"
+                app:backgroundTint="@color/colorAccent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardSignIn" />
@@ -267,7 +267,7 @@
                 android:includeFontPadding="false"
                 android:padding="@dimen/_6sdp"
                 android:text="@string/textSingIn"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_14ssp" />
 
         </LinearLayout>
