@@ -3,15 +3,16 @@ package com.example.videomeeting.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.videomeeting.R;
 import com.example.videomeeting.adapters.UsersAdapter;
+import com.example.videomeeting.listeners.UsersListener;
 import com.example.videomeeting.models.User;
 import com.example.videomeeting.utilities.Constants;
 import com.example.videomeeting.utilities.PreferenceManager;
@@ -25,10 +26,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements UsersListener {
     private TextView textTitle, textSignOut, textErrorMessage;
     private RecyclerView usersRecyclerView;
-    private ProgressBar usersProgressBar;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     private PreferenceManager preferenceManager;
     private List<User> users;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         //<editor-fold desc="Setup adapter">
         users = new ArrayList<>();
-        usersAdapter = new UsersAdapter(users);
+        usersAdapter = new UsersAdapter(users, this);
         usersRecyclerView.setAdapter(usersAdapter);
         //</editor-fold>
 
@@ -64,15 +65,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getUsers() {
-        usersProgressBar.setVisibility(View.VISIBLE);
+        swipeRefreshLayout.setRefreshing(true);
 
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseFirestore.collection(Constants.KEY_COLLECTION_USERS).get()
                 .addOnCompleteListener(task -> {
-                    usersProgressBar.setVisibility(View.GONE);
+                    swipeRefreshLayout.setRefreshing(false);
 
                     String myUserId = preferenceManager.getString(Constants.KEY_USER_ID);
                     if (task.isSuccessful() && task.getResult() != null) {
+                        users.clear();
+
                         for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
                             if (myUserId.equals(documentSnapshot.getId())) {
                                 continue;
@@ -128,8 +131,40 @@ public class MainActivity extends AppCompatActivity {
         textSignOut = findViewById(R.id.textSignOut);
         textErrorMessage = findViewById(R.id.textErrorMessage);
         usersRecyclerView = findViewById(R.id.usersRecyclerView);
-        usersProgressBar = findViewById(R.id.usersProgressBar);
+
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this::getUsers);
 
         preferenceManager = new PreferenceManager(getApplicationContext());
+    }
+
+    @Override
+    public void initiateVideoMeeting(User user) {
+        if (user.token == null || user.token.trim().isEmpty()) {
+            Toast.makeText(this,
+                    user.firstName + " " + user.lastName + " is not available for meeting",
+                    Toast.LENGTH_SHORT)
+                    .show();
+        } else {
+            Toast.makeText(this,
+                    "Video meeting with " + user.firstName + " " + user.lastName,
+                    Toast.LENGTH_SHORT)
+                    .show();
+        }
+    }
+
+    @Override
+    public void initiateAudioMeeting(User user) {
+        if (user.token == null || user.token.trim().isEmpty()) {
+            Toast.makeText(this,
+                    user.firstName + " " + user.lastName + " is not available for meeting",
+                    Toast.LENGTH_SHORT)
+                    .show();
+        } else {
+            Toast.makeText(this,
+                    "Audio meeting with " + user.firstName + " " + user.lastName,
+                    Toast.LENGTH_SHORT)
+                    .show();
+        }
     }
 }
